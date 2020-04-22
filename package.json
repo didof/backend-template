@@ -1,0 +1,32 @@
+{
+  "name": "back-studies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "prostagm4",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-promise-router": "^3.0.3",
+    "joi": "^14.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "mongoose": "^5.9.10",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "morgan": "^1.10.0"
+  },
+  "_moduleAliases": {
+    "@models": "models/",
+    "@helpers": "helpers/",
+    "@config": "config/"
+  }
+}
