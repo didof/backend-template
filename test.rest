@@ -1,0 +1,22 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "mario@gmail.com",
+    "password": "mario"
+}
+
+###
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "mario@gmail.com",
+    "password": "mario"
+}
+
+###
+
+GET http://localhost:3000/api/auth/secret
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9zdGdtNCIsInN1YiI6IjVlYTE3MmZmOTFmYTE1MGU4NDM3NDRlZCIsImlhdCI6MTU4NzYzOTE0MzgyOSwiZXhwIjoxNTg3NzI1NTQzODI5fQ.5gHgjsilJHuOK7jrCru1PDg1kzBdZC9HEDMTYai7LNg
