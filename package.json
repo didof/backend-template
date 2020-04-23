@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=test nodemon index.js",
-    "prod": "cross-env NODE_ENV=production nodemon index.js"
+    "start-dev": "cross-env NODE_ENV=prod nodemon index.js",
+    "test": "cross-env NODE_ENV=test nodemon index.js"
   },
   "author": "prostagm4",
   "license": "ISC",
