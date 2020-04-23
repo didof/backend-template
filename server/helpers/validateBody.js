@@ -4,6 +4,7 @@ module.exports = {
 	validateBody: (schema) => {
 		return (req, res, next) => {
 			console.log('[helpers/routes.validateBody] triggered')
+			
 			const result = Joi.validate(req.body, schema)
 			if (result.error) {
 				return res.status(400).json(result.error)

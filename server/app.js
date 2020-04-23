@@ -5,10 +5,10 @@ require('dotenv').config()
 require('module-alias/register')
 
 // middlewares
-require('@config/middlewares/setup')(app)
+app.use(require('@config/middlewares/setup')(app))
 
 // mongoose
-require('@config/setMongooseLink')(app)
+require('@config/mongoose/setup')(app)
 
 // routes
 app.use('/', require('./routes/'))

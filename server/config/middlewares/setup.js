@@ -3,7 +3,7 @@ const express = require('express')
 
 const SET = {
 	test: [morgan('dev'), express.json(), express.urlencoded({ extended: false })],
-	prod: [express.json(), express.urlencoded({ extended: false })]
+	prod: [express.json(), express.urlencoded({ extended: false })],
 }
 
 module.exports = (app) => {
