@@ -5,10 +5,11 @@ require('dotenv').config()
 require('module-alias/register')
 
 // middlewares
-require('@helpers/checkNODE_ENV')(app)
+require('@config/pickMiddlewaresSet')(app)
 
 // mongoose
-require('./config/mongoose')
+//TODO: in base a ambiente, imposta la connessione al database
+require('@config/setMongooseLink')(app)
 
 // routes
 app.use('/', require('./routes/'))
