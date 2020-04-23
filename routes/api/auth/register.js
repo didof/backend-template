@@ -1,5 +1,3 @@
-require('module-alias/register')
-
 const UserModel = require.main.require('@models/user.model')
 
 module.exports = (req, res, next) => {

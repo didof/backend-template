@@ -11,6 +11,10 @@ router
 	.post(validateBody(schemas.auth), require('./register'))
 
 router
+	.route('/login')
+	.post(validateBody(schemas.auth), passport.authenticate('local', { session: false }), require('./login'))
+
+router
 	.route('/secret')
 	.get(passport.authenticate('jwt', { session: false }), require('./secret'))
 

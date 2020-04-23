@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 
 require('dotenv').config()
+require('module-alias/register')
 
 // middlewares
 app.use(require('./middlewares/common'))
