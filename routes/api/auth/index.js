@@ -1,9 +1,8 @@
-require('module-alias/register')
-
 const router = require('express').Router()
-const passport = require('passport')
-require('@config/passport')
 
+// middlewares
+const passport = require('passport')
+require('@config/passport/')
 const { validateBody, schemas } = require('@helpers/validateBody')
 
 router
