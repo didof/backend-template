@@ -5,7 +5,7 @@ require('dotenv').config()
 require('module-alias/register')
 
 // middlewares
-require('@helpers/checkNODE_ENV')(app, 'test')
+require('@helpers/checkNODE_ENV')(app)
 
 // mongoose
 require('./config/mongoose')
