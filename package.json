@@ -2,9 +2,9 @@
   "name": "back-studies",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon index.js"
   },
   "author": "prostagm4",
   "license": "ISC",
@@ -26,8 +26,9 @@
     "morgan": "^1.10.0"
   },
   "_moduleAliases": {
-    "@models": "models/",
-    "@helpers": "helpers/",
-    "@config": "config/"
+    "@models": "server/models/",
+    "@helpers": "server/helpers/",
+    "@config": "server/config/",
+    "@middlewares": "server/middlewares"
   }
 }
