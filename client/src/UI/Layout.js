@@ -2,7 +2,7 @@
 import React from 'react'
 
 //* components
-import Header from 'components/Header'
+import Header from 'UI/Header/index'
 
 export default ({ children }) => (
     <>

@@ -15,5 +15,7 @@ Start both with concurrently:
 - add possibility to post
     - add comments to posts
     - add ranks posts
+- add forgot password
+- add send email
 - add real-time chat
 - add APP server error handler

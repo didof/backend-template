@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preserver-dev": "npm install",
     "server-dev": "cross-env NODE_ENV=prod nodemon index.js --prefix server",
-    "preclient-dev": "npm install --prefix client",
     "client-dev": "npm start ---prefix client",
     "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
     "test": "cross-env NODE_ENV=test nodemon index.js"
