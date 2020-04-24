@@ -4,10 +4,14 @@ module.exports = {
 	validateBody: (schema) => {
 		return (req, res, next) => {
 			console.log('[helpers/routes.validateBody] triggered')
-			
-			const result = Joi.validate(req.body, schema)
+
+			const result = Joi.validate(req.body, schema, { abortEarly: false })
 			if (result.error) {
-				return res.status(400).json(result.error)
+				return res.status(200).json({
+					type: 'error',
+					msg: 'There was a problem during the validation of your credentials',
+					details: result.error,
+				})
 			}
 
 			if (!req.value) {
@@ -19,7 +23,13 @@ module.exports = {
 	},
 
 	schemas: {
-		auth: Joi.object().keys({
+		register: Joi.object().keys({
+			name: Joi.string().required(),
+			email: Joi.string().email().required(),
+			password: Joi.string().required(),
+			confirmPassword: Joi.any().valid(Joi.ref('password')).required(),
+		}),
+		login: Joi.object().keys({
 			email: Joi.string().email().required(),
 			password: Joi.string().required(),
 		}),

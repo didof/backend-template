@@ -8,11 +8,11 @@ const useStrategy = require('@helpers/useStrategy')
 
 router
 	.route('/register')
-	.post(validateBody(schemas.auth), require('./register'))
+	.post(validateBody(schemas.register), require('./register'))
 
 router
 	.route('/login')
-	.post(validateBody(schemas.auth), useStrategy('local'), require('./login'))
+	.post(validateBody(schemas.login), useStrategy('local'), require('./login'))
 
 router.route('/logout').get(require('./logout'))
 

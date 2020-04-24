@@ -5,9 +5,7 @@ export default {
 		console.log('[services/auth] register triggered')
 		return axios
 			.post('/api/auth/register', user)
-			.then(response => {
-				console.log(response)
-			})
+			.then(response => response)
 			.catch(err => {
 				console.error(err)
 			})

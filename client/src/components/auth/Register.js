@@ -15,10 +15,13 @@ const Register = (props) => {
 
 	const handle_register = (e) => {
 		e.preventDefault()
-
 		const user = { name, email, job, password, confirmPassword }
-
 		props.register(user)
+	}
+
+	if(props.auth) {
+		console.log(props.auth)
+		//TODO: notify the errors in the form
 	}
 
 	return (
@@ -63,7 +66,7 @@ const Register = (props) => {
 								<i className='fa fa-building'></i>
 							</span>
 						</div>
-						<select className='form-control' onChange={(e) => setJob(e.target.value)}>
+						<select disabled className='form-control' onChange={(e) => setJob(e.target.value)}>
 							<option value="student">student</option>
 							<option value="private">private</option>
 							<option value="public">public</option>
@@ -113,9 +116,11 @@ const Register = (props) => {
 	)
 }
 
-// const mapStateToProps = (state) => (
-// 	numberOfSubs: state.auth
-// )
+const mapStateToProps = (state) => {
+	return {
+		auth: state.auth
+	}
+}
 
 const mapDispatchToProps = (dispatch) => {
 	return {
@@ -124,4 +129,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
