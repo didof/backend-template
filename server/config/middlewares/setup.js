@@ -9,6 +9,6 @@ const SET = {
 module.exports = (app) => {
 	const env = process.env.NODE_ENV
 
-	console.log('[config/middlewares/setup] set in use: ', SET[env])
+	console.log(`[config/middlewares/setup] using "${env}" set:`, SET[env])
 	return SET[env]
 }

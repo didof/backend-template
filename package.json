@@ -4,13 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "cross-env NODE_ENV=prod nodemon index.js",
+    "preserver-dev": "npm install",
+    "server-dev": "cross-env NODE_ENV=prod nodemon index.js --prefix server",
+    "preclient-dev": "npm install --prefix client",
+    "client-dev": "npm start ---prefix client",
+    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
     "test": "cross-env NODE_ENV=test nodemon index.js"
   },
   "author": "prostagm4",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
+    "concurrently": "^5.1.0",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-promise-router": "^3.0.3",
