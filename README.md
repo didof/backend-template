@@ -1,8 +1,10 @@
 # npm scripts
 Start only API server:
 - npm run server-dev
+
 Start only client server:
 - npm run client-dev
+
 Start both with concurrently:
 - npm run start-dev 
 
