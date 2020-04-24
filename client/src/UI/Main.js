@@ -11,7 +11,7 @@ import Login from 'components/auth/Login'
 
 export default props => {
     return (
-        <div class="container mt-3">
+        <div className="container mt-3">
         <Switch>
             <Route exact path="/" component={Welcome} />
             <Route path="/dashboard" component={Dashboard} />

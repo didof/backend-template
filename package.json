@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server-dev": "cross-env NODE_ENV=prod nodemon index.js --prefix server",
-    "client-dev": "npm start ---prefix client",
-    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
-    "test": "cross-env NODE_ENV=test nodemon index.js"
+    "server": "cross-env NODE_ENV=prod nodemon index.js --prefix server",
+    "client": "npm start ---prefix client",
+    "start": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
+    "server-test": "cross-env NODE_ENV=test nodemon index.js --prefix server"
   },
   "author": "prostagm4",
   "license": "ISC",

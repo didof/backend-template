@@ -1,38 +1,9 @@
 // dependencies
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React from 'react'
 
-//* services
-import services from 'services/auth'
-
-//* actions
-import { action_register } from 'store/reducers/auth/action'
-
-const Register = (props) => {
-	const [name, setName] = useState('')
-	const [email, setEmail] = useState('')
-	const [job, setJob] = useState('')
-	const [password, setPassword] = useState('')
-	const [confirmPassword, setConfirmPassword] = useState('')
-
-	const handle_register = (e) => {
-		e.preventDefault()
-		// services.register({ email, password })
-
-		const user = { name, email, job, password, confirmPassword }
-
-		props.subscribe(user)
-	}
-
-	return (
-		<div className='card bg-light'>
-			<article className='card-body mx-auto'>
-				<h4 className='card-title mt-3 mb-4 text-center'>Create Account</h4>
-				<hr />
-				<p className='text-center'>Get started with your free account</p>
-				<p className='divider-text'></p>
-				<form onSubmit={handle_register}>
+export default props => {
+    return (
+        <form onSubmit={handle_register}>
 					<div className='form-group input-group'>
 						<div className='input-group-prepend'>
 							<span className='input-group-text'>
@@ -112,20 +83,5 @@ const Register = (props) => {
 						Have an account? <NavLink to='/login'>Login</NavLink>
 					</p>
 				</form>
-			</article>
-		</div>
-	)
+    )
 }
-
-// const mapStateToProps = (state) => (
-// 	numberOfSubs: state.auth
-// )
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		subscribe: () => dispatch(action_register())
-	}
-}
-
-
-export default connect(null, mapDispatchToProps)(Register)

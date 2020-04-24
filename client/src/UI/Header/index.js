@@ -8,11 +8,11 @@ import Button from './Button'
 export default (props) => {
 	return (
 		<nav className='navbar navbar-expand-lg navbar-light bg-light'>
-			<NavLink class='navbar-brand' to='/'>
+			<NavLink className='navbar-brand' to='/'>
 				Prostagm4
 			</NavLink>
 			<button
-				class='navbar-toggler'
+				className='navbar-toggler'
 				type='button'
 				data-toggle='collapse'
 				data-target='#navbarNavDropdown'
@@ -20,23 +20,23 @@ export default (props) => {
 				aria-expanded='false'
 				aria-label='Toggle navigation'
 			>
-				<span class='navbar-toggler-icon'></span>
+				<span className='navbar-toggler-icon'></span>
 			</button>
-			<div class='collapse navbar-collapse' id='navbarNavDropdown'>
-				<ul class='navbar-nav mr-auto'>
-					<li class='nav-item active'>
-						<div class='nav-link'>
+			<div className='collapse navbar-collapse' id='navbarNavDropdown'>
+				<ul className='navbar-nav mr-auto'>
+					<li className='nav-item active'>
+						<div className='nav-link'>
 							<NavLink to='/dashboard'>dashboard</NavLink>
 						</div>
 					</li>
-					<li class='nav-item'>
-						<a class='nav-link' href='/contact'>
+					<li className='nav-item'>
+						<a className='nav-link' href='/contact'>
 							contact
 						</a>
 					</li>
-					<li class='nav-item dropdown'>
+					<li className='nav-item dropdown'>
 						<a
-							class='nav-link dropdown-toggle'
+							className='nav-link dropdown-toggle'
 							href='/features'
 							id='navbarDropdownMenuLink'
 							data-toggle='dropdown'
@@ -45,18 +45,18 @@ export default (props) => {
 						>
 							features
 						</a>
-						<div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
-							<a class='dropdown-item' href='/post'>
+						<div className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+							<a className='dropdown-item' href='/post'>
 								post
 							</a>
-							<a class='dropdown-item' href='/chat'>
+							<a className='dropdown-item' href='/chat'>
 								chat
 							</a>
 						</div>
 					</li>
 				</ul>
-				<ul class='navbar-nav'>
-					<li class='nav-item'>
+				<ul className='navbar-nav'>
+					<li className='nav-item'>
 						<Button
 							shape='btn btn-primary ml-1 text-white'
 							label='login'
@@ -67,7 +67,7 @@ export default (props) => {
 							label='register'
 							url='/register'
 						/>
-						<a class='btn btn-warning btn-large ml-1' href='/logout'>
+						<a className='btn btn-warning btn-large ml-1' href='/logout'>
 							Logout
 						</a>
 					</li>

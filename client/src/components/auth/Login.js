@@ -1,8 +1,20 @@
 //* dependencies
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import axios from 'axios'
+
+//* services
+import services from 'services/auth'
 
 export default (props) => {
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+
+	const handle_login = (e) => {
+		e.preventDefault()
+		services.login({ email, password })
+	}
+
 	return (
 		<div className='container container-fluid'>
 			<div className='card'>
@@ -19,10 +31,12 @@ export default (props) => {
 									</span>
 								</div>
 								<input
-									name=''
+									name='email'
 									className='form-control'
-									placeholder='Email or login'
+									placeholder='Email'
 									type='email'
+									value={email}
+									onChange={(e) => setEmail(e.currentTarget.value)}
 								/>
 							</div>
 						</div>
@@ -33,11 +47,17 @@ export default (props) => {
 										<i className='fa fa-lock'></i>
 									</span>
 								</div>
-								<input className='form-control' placeholder='******' type='password' />
+								<input
+									className='form-control'
+									placeholder='******'
+									type='password'
+									value={password}
+									onChange={(e) => setPassword(e.currentTarget.value)}
+								/>
 							</div>
 						</div>
 						<div className='form-group'>
-							<button type='submit' className='btn btn-primary btn-block'>
+							<button type='submit' className='btn btn-primary btn-block' onClick={handle_login}>
 								Login
 							</button>
 						</div>
