@@ -3,9 +3,6 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-//* services
-import services from 'services/auth'
-
 //* actions
 import { action_register } from 'store/reducers/auth/action'
 
@@ -18,11 +15,10 @@ const Register = (props) => {
 
 	const handle_register = (e) => {
 		e.preventDefault()
-		// services.register({ email, password })
 
 		const user = { name, email, job, password, confirmPassword }
 
-		props.subscribe(user)
+		props.register(user)
 	}
 
 	return (
@@ -123,7 +119,7 @@ const Register = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		subscribe: () => dispatch(action_register())
+		register: (user) => dispatch(action_register(user))
 	}
 }
 

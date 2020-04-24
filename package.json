@@ -6,7 +6,7 @@
   "scripts": {
     "server": "cross-env NODE_ENV=prod nodemon index.js --prefix server",
     "client": "npm start ---prefix client",
-    "start": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "server-test": "cross-env NODE_ENV=test nodemon index.js --prefix server"
   },
   "author": "prostagm4",

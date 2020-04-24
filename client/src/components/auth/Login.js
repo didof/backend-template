@@ -1,28 +1,31 @@
 //* dependencies
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux'
 
-//* services
-import services from 'services/auth'
+//* actions
+import { action_login } from 'store/reducers/auth/action'
 
-export default (props) => {
+const Login = (props) => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
 	const handle_login = (e) => {
 		e.preventDefault()
-		services.login({ email, password })
+
+		const user = { email, password }
+
+		props.login(user)
 	}
 
 	return (
 		<div className='container container-fluid'>
 			<div className='card'>
 				<article className='card-body mx-auto'>
-					<h4 className='card-title text-center mb-4 mt-3'>Sign in</h4>
+					<h4 className='card-title text-center mb-4 mt-3'>Login</h4>
 					<hr />
 					<p className='text-success text-center'>Some message goes here</p>
-					<form>
+					<form onSubmit={handle_login}>
 						<div className='form-group'>
 							<div className='input-group'>
 								<div className='input-group-prepend'>
@@ -31,7 +34,6 @@ export default (props) => {
 									</span>
 								</div>
 								<input
-									name='email'
 									className='form-control'
 									placeholder='Email'
 									type='email'
@@ -57,7 +59,10 @@ export default (props) => {
 							</div>
 						</div>
 						<div className='form-group'>
-							<button type='submit' className='btn btn-primary btn-block' onClick={handle_login}>
+							<button
+								type='submit'
+								className='btn btn-primary btn-block'
+							>
 								Login
 							</button>
 						</div>
@@ -70,3 +75,11 @@ export default (props) => {
 		</div>
 	)
 }
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		login: (user) => dispatch(action_login(user)),
+	}
+}
+
+export default connect(null, mapDispatchToProps)(Login)
