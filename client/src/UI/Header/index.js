@@ -58,16 +58,16 @@ export default (props) => {
 				<ul className='navbar-nav'>
 					<li className='nav-item'>
 						<Button
-							shape='btn btn-primary ml-1 text-white'
+							shape='btn btn-primary btn-lg ml-1 text-white'
 							label='login'
 							url='/login'
 						/>
 						<Button
-							shape='btn btn-primary ml-1 text-white'
+							shape='btn btn-primary btn-lg ml-1 text-white'
 							label='register'
 							url='/register'
 						/>
-						<a className='btn btn-warning btn-large ml-1' href='/logout'>
+						<a className='btn btn-warning btn-lg btn-large ml-1' href='/logout'>
 							Logout
 						</a>
 					</li>
