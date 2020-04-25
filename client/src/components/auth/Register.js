@@ -1,6 +1,6 @@
 // dependencies
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 //* actions
@@ -21,9 +21,11 @@ const Register = (props) => {
 		props.register(user)
 	}
 
-	if (props.auth) {
-		console.log(props.auth)
-		//TODO: notify the errors in the form
+	let errors = null
+	if (props.auth && props.auth.error_registration) {
+		errors = props.auth.error_registration
+		if (errors.password && errors.password !== 'valid')
+			errors.confirmPassword = 'must be a valid password'
 	}
 
 	const config = {
@@ -40,24 +42,28 @@ const Register = (props) => {
 				label: 'Enter name',
 				value: name,
 				changed: (e) => setName(e.currentTarget.value),
+				error: errors.name,
 			},
 			{
 				type: 'email',
 				label: 'Email address',
 				value: email,
 				changed: (e) => setEmail(e.currentTarget.value),
+				error: errors.email,
 			},
 			{
 				type: 'password',
 				label: 'Pick password',
 				value: password,
 				changed: (e) => setPassword(e.currentTarget.value),
+				error: errors.password,
 			},
 			{
 				type: 'password',
 				label: 'Confirm password',
 				value: confirmPassword,
 				changed: (e) => setConfirmPassword(e.currentTarget.value),
+				error: errors.confirmPassword,
 			},
 		],
 		buttons: [
@@ -65,20 +71,24 @@ const Register = (props) => {
 			// 	{ type: 'click', label: 'Get Back' },
 			// 	{ type: 'click', label: 'Need help', color: 'info' },
 			// ],
-			[{ type: 'submit', label: 'Create account', color: 'primary', main: true }],
+			[{ type: 'submit', label: 'Create account', color: 'primary' }],
 		],
 		additional: {
 			text: 'Already have an account? ',
 			label: 'Login',
-			url: '/login'
-		}
+			url: '/login',
+		},
 	}
 
-	return (
-		<div className='card bg-light'>
-			<Form config={config} />
-		</div>
-	)
+	if (props.auth && props.auth.redirect) {
+		return <Redirect to={props.auth.redirect} />
+	} else {
+		return (
+			<div className='card bg-light'>
+				<Form config={config} />
+			</div>
+		)
+	}
 }
 
 const mapStateToProps = (state) => {

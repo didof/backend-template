@@ -5,9 +5,9 @@ const initialState = {
 		name: null,
 		email: null,
 		password: null,
-		confirmPassword: null
+		confirmPassword: null,
 	},
-	other: 'other'
+	redirect: null,
 }
 
 export default (state = initialState, action) => {
@@ -21,6 +21,27 @@ export default (state = initialState, action) => {
 				updatedState.error_registration[label] = message
 			})
 			return updatedState
+		case types.RESET_ERROR:
+			return {
+				...state,
+				error_registration: {
+					name: null,
+					email: null,
+					password: null,
+					confirmPassword: null,
+				},
+			}
+		case types.SUCCESS:
+			return {
+				...state,
+				error_registration: {
+					name: 'valid',
+					email: 'valid',
+					password: 'valid',
+					confirmPassword: 'valid',
+				},
+				redirect: '/dashboard'
+			}
 
 		default:
 			return { ...state }

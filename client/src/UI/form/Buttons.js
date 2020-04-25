@@ -4,7 +4,7 @@ import React from 'react'
 export default ({ list }) => {
 	const buttons = list.map((row, index) => {
 		if (row.length < 2) {
-			const { type, label, color = 'secondary', main } = row[0]
+			const { type, label, color = 'secondary' } = row[0]
 			const shape = 'btn btn-' + color + ' btn-lg btn-block'
 			return (
 				<div className='form-group' key={index}>

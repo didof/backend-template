@@ -13,7 +13,9 @@ export default ({ config }) => {
 	})
 
 	return (
-		<article className='card-body mx-auto'>
+		<div class="row">
+
+		<article className='card-body col-lg-5 mx-auto'>
 			<Header {...header} />
 			<form onSubmit={action.onSubmit}>
 				{inputs}
@@ -24,5 +26,6 @@ export default ({ config }) => {
 				<NavLink to={additional.url}>{additional.label}</NavLink>
 			</h5>
 		</article>
+		</div>
 	)
 }
