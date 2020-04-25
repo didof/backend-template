@@ -7,6 +7,10 @@ const initialState = {
 		password: null,
 		confirmPassword: null,
 	},
+	error_login: {
+		email: null,
+		password: null,
+	},
 	redirect: null,
 }
 
@@ -21,6 +25,14 @@ export default (state = initialState, action) => {
 				updatedState.error_registration[label] = message
 			})
 			return updatedState
+		case types.ERROR_LOGIN:
+			return {
+				...state,
+				error_login: {
+					email: action.payload,
+					password: action.payload,
+				},
+			}
 		case types.RESET_ERROR:
 			return {
 				...state,
@@ -40,7 +52,15 @@ export default (state = initialState, action) => {
 					password: 'valid',
 					confirmPassword: 'valid',
 				},
-				redirect: '/dashboard'
+				error_login: {
+					email: 'valid',
+					password: 'valid',
+				},
+			}
+		case types.REDIRECT:
+			return {
+				...state,
+				redirect: action.payload,
 			}
 
 		default:

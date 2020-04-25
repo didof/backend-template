@@ -7,54 +7,60 @@ const resetErrors = () => {
 	return { type: types.RESET_ERROR }
 }
 
-const loadErrors = (errors) => {
-	return { type: types.ERROR, payload: errors }
+const loadErrors = (errors, process) => {
+	switch (process) {
+		case 'registration':
+			return { type: types.ERROR, payload: errors }
+		default:
+			return { type: types.ERROR_LOGIN, payload: errors }
+	}
 }
 
 const success = () => {
 	return { type: types.SUCCESS }
 }
 
+const redirect = (url) => {
+	return { type: types.REDIRECT, payload: url }
+}
+
 export const action_register = (credentials) => {
 	return (dispatch) => {
 		dispatch(resetErrors())
-
-		const user = {
-			name: credentials.name,
-			email: credentials.email,
-			password: credentials.password,
-			confirmPassword: credentials.confirmPassword,
-		}
-		services.register(user).then((result) => {
-			console.log('[auth/action]', result)
+		services.register(credentials).then((result) => {
 			if (result.data.type === 'error') {
 				const errors = result.data.details.details.map((error) => {
 					const fixMsg = error.message.split(' ').splice(1).join(' ')
 
 					return { label: error.context.label, message: fixMsg }
 				})
-				dispatch(loadErrors(errors))
+				dispatch(loadErrors(errors, 'registration'))
 			} else {
 				dispatch(success())
+				setTimeout(() => {
+					dispatch(redirect('/dashboard'))
+					dispatch(resetErrors())
+				}, 500)
 			}
 		})
-
-		//TODO: other fields will be added to the collection
 	}
 }
 
 export const action_login = (credentials) => {
 	return (dispatch) => {
-		//TODO: dispatch(loading())
-
-		// only email and password are sent to services.register for it is used
-		// in the passport-local strategy
-		const user = {
-			email: credentials.email,
-			password: credentials.password,
-		}
-		services.login(user)
-
-		//TODO: other fields will be added to the collection
+		services.login(credentials).then((result) => {
+			if (result.data.type === 'error') {
+				const errors = result.data.details.details
+				dispatch(loadErrors('must fill this input', 'login'))
+			} else {
+				dispatch(success())
+				setTimeout(() => {
+					dispatch(redirect('/dashboard'))
+					dispatch(resetErrors())
+				}, 500)
+			}
+		}).catch(err => {
+			dispatch(loadErrors('wrong credentials', 'login'))
+		})
 	}
 }

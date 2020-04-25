@@ -5,8 +5,8 @@ export default {
 		console.log('[services/auth] register triggered')
 		return axios
 			.post('/api/auth/register', user)
-			.then(response => response)
-			.catch(err => {
+			.then((response) => response)
+			.catch((err) => {
 				console.error(err)
 			})
 	},
@@ -14,11 +14,11 @@ export default {
 		console.log('[services/auth] login triggered')
 		return axios
 			.post('/api/auth/login', user)
-			.then(response => {
-                console.log(response)
-            })
+			.then((response) => {
+				return response
+			})
 			.catch((err) => {
-				console.error(err)
+				return err
 			})
 	},
 }

@@ -13,7 +13,7 @@ export default ({ config }) => {
 	})
 
 	return (
-		<div class="row">
+		<div className='card bg-light row'>
 
 		<article className='card-body col-lg-5 mx-auto'>
 			<Header {...header} />

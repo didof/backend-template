@@ -83,11 +83,7 @@ const Register = (props) => {
 	if (props.auth && props.auth.redirect) {
 		return <Redirect to={props.auth.redirect} />
 	} else {
-		return (
-			<div className='card bg-light'>
-				<Form config={config} />
-			</div>
-		)
+		return <Form config={config} />
 	}
 }
 

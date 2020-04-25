@@ -8,7 +8,7 @@ module.exports = new LocalStrategy(
 	},
 	(email, password, done) => {
 		UserModel.findOne({ email })
-			.then((user) => {
+			.then((user) => {	
 				if (!user) {
 					return done(null, false)
 				}
